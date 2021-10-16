@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flight Ticket Purchasing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            background-color: #292929;
+        }
+
+        #header {
+            color: white;
+            background-color: #292929;
+        }
+
+        tr,
+        td {
+            padding: 0.7em;
+        }
+    </style>
+    <script>
+        var name, jSpasi, lName, email, address, arrival, depart;
+        $(document).ready(function () {
+            $(".form2").hide();
+            $(".form3").hide();
+            $("#savebutton1").click(function () {
+                name = $("#name").val();
+                jSpasi = name.indexOf(" ");
+                lName = name.substring(jSpasi + 1);
+                email = $("#email").val();
+                address = $("#address").val();
+                $(".form1").slideUp();
+                $(".form2").slideDown();
+                $("#savebutton2").hide();
+            })
+            $("#departsub").click(function () {
+                depart = "Surabaya";
+                $("#departbutton").text(depart);
+                $("#arrsub").hide();
+            })
+            $("#departbw").click(function () {
+                depart = "Banyuwangi";
+                $("#departbutton").text(depart);
+                $("#arrbw").hide();
+            })
+            $("#departsmg").click(function () {
+                depart = "Semarang";
+                $("#departbutton").text(depart);
+                $("#arrsmg").hide();
+            })
+            $("#departso").click(function () {
+                depart = "Solo";
+                $("#departbutton").text(depart);
+                $("#arrso").hide();
+            })
+            $("#arrsub").click(function () {
+                arrival = "Surabaya";
+                $("#arrbutton").text(arrival);
+                $("#departsub").hide();
+                $("#savebutton2").show();
+            })
+            $("#arrbw").click(function () {
+                arrival = "Banyuwangi";
+                $("#arrbutton").text(arrival);
+                $("#departbw").hide();
+                $("#savebutton2").show();
+            })
+            $("#arrsmg").click(function () {
+                arrival = "Semarang";
+                $("#arrbutton").text(arrival);
+                $("#departsmg").hide();
+                $("#savebutton2").show();
+            })
+            $("#arrso").click(function () {
+                arrival = "Solo";
+                $("#arrbutton").text(arrival);
+                $("#departso").hide();
+                $("#savebutton2").show();
+            })
+            $("#savebutton2").click(function () {
+                $(".form2").slideUp();
+                $(".form3").slideDown();
+                $("#t1").slideUp();
+                $("#t2").slideUp();
+                $("#ticketname").text("Name : ");
+                $("#printname").text(lName + ", " + name.substring(0, 1) + ".");
+                $("#ticketemail").text("E-mail : ");
+                $("#printemail").text(email);
+                $("#ticketaddress").text("Address : ");
+                $("#printaddress").text(address);
+                $("#ticketdepart").text("Departing for : ");
+                $("#printdepart").text(depart);
+                $("#ticketarr").text("Arriving at : ");
+                $("#printarr").text(arrival);
+                $("#ty").text("Thank you for flying with Redgale Airways.");
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container-fluid" style="height: 10%;" id="header">
+        <br>
+        <h2>Redgale Airways</h2>
+        <p>Wherever you go, whatever you do, we will be right here serving you</p>
+    </div>
+
+    <nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: #373737;">
+        <a class="navbar-brand" href="#">Flight Ticket Purchase</a>
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact Us!</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Website</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container"><br>
+        <div class="row">
+            <div class="col">
+                <h2 id="t1">Flight Ticket Purchase Form</h2>
+                <p id="t2">Please enter the correct information on the form below:</p>
+                <br>
+
+                <div class="form1">
+                    <h2>Personal Identity</h2>
+                    <table>
+                        <tr>
+                            <td>Name</td>
+                            <td>: &nbsp;<input type="text" id="name" placeholder="John Doe"></td>
+                        </tr>
+                        <tr>
+                            <td>E-mail</td>
+                            <td>: &nbsp;<input type="text" id="email" placeholder="jdoe123@mail.com"></td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>: &nbsp;<input type="text" id="address" placeholder="14 Ebbenston Ave."></td>
+                        </tr>
+                    </table>
+                    <button type="button" class="btn btn-outline-primary" id="savebutton1">Save All...</button>
+                </div>
+
+                <div class="form2">
+                    <h2>Flight Information</h2>
+                    <table>
+                        <tr>
+                            <td>
+                                Departing Terminal:
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                        id="departbutton">
+                                        Departure
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <h5 class="dropdown-header">Jawa Timur</h5>
+                                        <a class="dropdown-item" href="#" id="departsub">Surabaya</a>
+                                        <a class="dropdown-item" href="#" id="departbw">Banyuwangi</a>
+                                        <h5 class="dropdown-header">Jawa Tengah</h5>
+                                        <a class="dropdown-item" href="#" id="departsmg">Semarang</a>
+                                        <a class="dropdown-item" href="#" id="departso">Solo</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Arriving Terminal:
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                        id="arrbutton">
+                                        Arrival
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <h5 class="dropdown-header">Jawa Timur</h5>
+                                        <a class="dropdown-item" href="#" id="arrsub">Surabaya</a>
+                                        <a class="dropdown-item" href="#" id="arrbw">Banyuwangi</a>
+                                        <h5 class="dropdown-header">Jawa Tengah</h5>
+                                        <a class="dropdown-item" href="#" id="arrsmg">Semarang</a>
+                                        <a class="dropdown-item" href="#" id="arrso">Solo</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <button type="button" class="btn btn-outline-primary" id="savebutton2">Save and Print</button>
+                </div>
+
+                <div class="form3">
+                    <h4>Here's your printable ticket!</h4>
+                    <table border="1px" style="background-color: aliceblue;">
+                        <tr>
+                            <td>
+                                <p id="ticketname" style="color: black;"></p>
+                            </td>
+                            <td>
+                                <p id="printname" style="color: black;"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p id="ticketemail" style="color: black;"></p>
+                            </td>
+                            <td>
+                                <p id="printemail" style="color: black;"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p id="ticketaddress" style="color: black;"></p>
+                            </td>
+                            <td>
+                                <p id="printaddress" style="color: black;"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p id="ticketdepart" style="color: black;"></p>
+                            </td>
+                            <td>
+                                <p id="printdepart" style="color: black;"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p id="ticketarr" style="color: black;"></p>
+                            </td>
+                            <td>
+                                <p id="printarr" style="color: black;"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <p id="ty" style="color: black;"></p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
